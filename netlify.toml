@@ -1,0 +1,13 @@
+# JARVIS is a desktop Python application (PyQt window + voice session) and
+# cannot run on Netlify. The phone dashboard in dashboard/ is served by the
+# app itself on the local network. Netlify only hosts the static project page
+# in public/ — there is no build step.
+[build]
+  publish = "public"
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JARVIS — Mark LVII · Personal AI Assistant</title>
+<meta name="description" content="A real-time, cross-platform voice AI that hears, sees, speaks and controls your computer. Runs on your own machine.">
+<style>
+  :root{--bg:#05080d;--panel:rgba(14,28,40,.55);--line:rgba(0,212,255,.22);--cyan:#00d4ff;--text:#cfe9f3;--dim:#7a97a6;--amber:#ffb547}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:radial-gradient(ellipse at 50% -10%,#0b2233 0%,var(--bg) 60%);color:var(--text);font:16px/1.6 ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;min-height:100vh}
+  a{color:var(--cyan)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  header{padding:96px 0 56px;text-align:center;position:relative}
+  .core{width:150px;height:150px;margin:0 auto 36px;border-radius:50%;position:relative;
+        background:radial-gradient(circle,#bff4ff 0%,#00d4ff 18%,rgba(0,212,255,.15) 45%,transparent 70%);
+        box-shadow:0 0 60px rgba(0,212,255,.45);animation:pulse 3.2s ease-in-out infinite}
+  .core::before,.core::after{content:"";position:absolute;inset:-14px;border:1px solid var(--line);border-radius:50%;border-top-color:var(--cyan);animation:spin 9s linear infinite}
+  .core::after{inset:-30px;border-right-color:var(--amber);animation-duration:14s;animation-direction:reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes pulse{50%{box-shadow:0 0 90px rgba(0,212,255,.7)}}
+  @media (prefers-reduced-motion:reduce){.core,.core::before,.core::after{animation:none}}
+  .tag{color:var(--cyan);letter-spacing:.35em;font-size:12px;text-transform:uppercase}
+  h1{font-size:clamp(40px,8vw,76px);letter-spacing:.12em;margin:10px 0 14px;font-weight:700}
+  .lead{max-width:660px;margin:0 auto;color:var(--dim);font-size:17px}
+  .cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{border:1px solid var(--cyan);padding:12px 22px;text-decoration:none;letter-spacing:.12em;font-size:13px;text-transform:uppercase;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+  .btn.primary{background:var(--cyan);color:#021018;font-weight:700}
+  section{padding:48px 0}
+  h2{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);padding:20px;backdrop-filter:blur(6px)}
+  .card h3{font-size:15px;margin-bottom:8px;color:#fff}
+  .card p{font-size:14px;color:var(--dim)}
+  pre{background:#020509;border:1px solid var(--line);padding:20px;overflow-x:auto;font-size:14px;color:#bfefff}
+  .note{margin-top:14px;font-size:14px;color:var(--dim)}
+  .note b{color:var(--amber);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{color:#fff;white-space:nowrap;width:30%}
+  td:last-child{color:var(--dim)}
+  footer{padding:40px 0 60px;text-align:center;color:var(--dim);font-size:13px;border-top:1px solid var(--line);margin-top:30px}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="core" aria-hidden="true"></div>
+  <div class="tag">Mark LVII · Personal AI Assistant</div>
+  <h1>J.A.R.V.I.S.</h1>
+  <p class="lead">A real-time voice AI that hears, sees, speaks and controls your computer, on Windows, macOS and Linux. It runs on your own machine: Gemini Live, or your own local models.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://github.com/thengsahil-oss/jarvis-2">View on GitHub</a>
+    <a class="btn" href="#quick-start">Quick start</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card"><h3>Background tasks</h3><p>Long work runs beside the conversation, saved after every step and picked up again after a restart. You can steer it by voice.</p></div>
+      <div class="card"><h3>Deep research</h3><p>Reads sources in full, checks every quote against the saved page and writes a cited report in your language.</p></div>
+      <div class="card"><h3>Routines &amp; quiet hours</h3><p>Briefings, check-ins, news watch and reminders all run on one schedule engine that you change by talking to it.</p></div>
+      <div class="card"><h3>Choose your engine</h3><p>Gemini Live, or your own STT + LLM + TTS: Ollama, LM Studio, OpenAI, Groq and more. Whisper and Piper run offline.</p></div>
+      <div class="card"><h3>System control</h3><p>Apps, windows, volume, browser, files and messages. Every action reports what it actually checked.</p></div>
+      <div class="card"><h3>Command-center HUD</h3><p>Glass panels, live gauges, a 3-D reactor core or a lip-synced holographic face, drawn in software.</p></div>
+      <div class="card"><h3>Memory &amp; undo</h3><p>Remembers what matters, shows you everything it has stored, and can undo the file and setting changes it made.</p></div>
+      <div class="card"><h3>Plugins</h3><p>Drop one <code>.py</code> file into <code>plugins/</code> and the assistant gains a new skill on its next launch.</p></div>
+    </div>
+  </section>
+
+  <section id="quick-start">
+    <h2>Quick start</h2>
+<pre>git clone https://github.com/thengsahil-oss/jarvis-2.git
+cd jarvis-2
+python setup.py   # installs what YOUR OS needs
+python main.py</pre>
+    <p class="note"><b>Runs locally, not in the browser.</b> JARVIS is a desktop application. It needs your microphone, speakers and screen. The phone dashboard is served by the app on your own network once it's running.</p>
+  </section>
+
+  <section>
+    <h2>Requirements</h2>
+    <table>
+      <tr><td>OS</td><td>Windows 10/11, macOS, or Linux (X11 for full desktop control)</td></tr>
+      <tr><td>Python</td><td>3.11, 3.12 or 3.13</td></tr>
+      <tr><td>Audio</td><td>Microphone and speakers</td></tr>
+      <tr><td>API key</td><td>A free Gemini key for the Gemini engine. A fully local setup needs none</td></tr>
+      <tr><td>GPU</td><td>Not required anywhere</td></tr>
+    </table>
+  </section>
+</main>
+
+<footer class="wrap">
+  JARVIS Mark LVII · © 2026 FatihMakes · Licensed CC BY-NC 4.0, no commercial use.
+</footer>
+</body>
+</html>
